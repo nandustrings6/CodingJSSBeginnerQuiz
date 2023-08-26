@@ -1,0 +1,40 @@
+body {
+    display: block;
+    margin: 0px;
+    background-image: url(./Assets/Backgroundimage.jpg);
+    background-size: contain;
+  }
+
+.Title {
+    display: flex;
+    text-rendering: auto;
+    font-size: 40px;
+}
+
+.Time {
+    text-align: right;
+}
+
+.Viewhighscores {
+    text-align: left;
+}
+
+.Page1Para {
+    text-align: center;
+}
+
+.Startquiz {
+    align-items: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+}
+
+button {
+    border-radius: 10%;
+    color: rgb(48, 168, 227);
+}
