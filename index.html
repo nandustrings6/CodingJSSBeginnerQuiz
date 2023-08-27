@@ -9,7 +9,8 @@
 
 <body>
     <header>
-            <div Class="Viewhighscores"><a href=highscores.html>View High Scores</a></div>
+            <div Class="Viewhighscores">
+                <a href=highscores.html>View High Scores</a></div>
         <div id="Timer">Time: 90 Seconds</div>
             <h1 Class="Title">Coding Quiz Challenge</h1>
     </header>
@@ -27,8 +28,8 @@
         </div>    
     </section>
 
-    <section Class="questionanswers">
-        <h1 id="question">Question1</h1>
+    <section id="questionanswers" Class="hidepage">
+        <h1 id="question">Question</h1>
         <div id="answers" Class="optionbtns">
             <button class="answerbtn">Option 1</button>
             <button class="answerbtn">Option 2</button>
@@ -41,12 +42,12 @@
         </div>
     </section>
     
-    <section Class="name&scorepage">
+    <section id="name&scorepage" Class="hidepage">
         <form id="submitpage">
             <h3 id="yourscore">You have completed the quiz!</h3>
             <h3 id="enterinitials">Enter your initials here</h3>
             <input type="text" id="initialssubmit" maxlength="5"/>
-            <button class="initialsubmit">Submit</button>
+            <button class="initialsubmitbtn">Submit</button>
         </form>
     </section>
 

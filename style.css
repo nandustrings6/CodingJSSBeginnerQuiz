@@ -46,7 +46,7 @@ ul {
 button {
     border-radius: 10%;
     background-color: rgb(47, 115, 176);
-    overflow: visible;
+    object-position: center;
 }
 
 .optionbtns {
@@ -62,7 +62,7 @@ button {
     color: rgb(158, 156, 156);
 }
 
-.questionanswers {
+#questionanswers {
     display: none;
 }
 
