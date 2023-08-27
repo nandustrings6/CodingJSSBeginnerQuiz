@@ -3,22 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodingQuizforJSSBeginners</title>
+    <title>Coding Quiz for JSS Beginners</title>
     <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
+
 <body>
-    <header Class="Page1">
-        <div class="Viewhighscores"><a href=highscores.html>View High Scores</a></div>
-        <time class="Time">Time:0</time>
+    <header>
+            <div Class="Viewhighscores"><a href=highscores.html>View High Scores</a></div>
+        <div id="Timer">Time: 90 Seconds</div>
             <h1 Class="Title">Coding Quiz Challenge</h1>
-                <p Class="Page1Para">Try to answer the following coding-related questions within the time limit of <span>90 seconds</span>. Keep in mind that incorrect answers will penalize your score and time by 10 seconds</p>
-                    <button Class="StartQuiz">Start Quiz</button>
     </header>
-    
-    <section Class="Alldonepage">
-        <h2>You have completed the quiz!</h2>
-        <h3>Enter your initials here</h3><input type="text"/><button class="initialsubmit">Submit</button>
+
+    <section Class="Page1">
+        <p Class="Page1Para">
+            <ul>
+            <li id="Welcome">Welcome to Javascript quiz!</li>
+            <li>Answer the following coding-related questions within the time limit of 90 seconds.</li> 
+            <li>Keep in mind that incorrect answers will penalize your score and time by 10 seconds.</li>
+            </ul>
+        </p>
+        <div>
+            <button Class="StartQuizbtn">Start Quiz</button>
+        </div>    
     </section>
+
+    <section Class="question&answers">
+        <h1 id="question">Question1</h1>
+        <div id="answers" Class="optionbtns">
+            <button class="answerbtn">Option 1</button>
+            <button class="answerbtn">Option 2</button>
+            <button class="answerbtn">Option 3</button>
+            <button class="answerbtn">Option 4</button>
+        </div>
+        <h2 class="displayanswer"></h2>
+        <div>
+            <button id="nextbtn">Go to next</button>
+        </div>
+    </section>
+    
+    <section Class="name&scorepage">
+        <form id="submitpage">
+            <h3 id="yourscore">You have completed the quiz!</h3>
+            <h3 id="enterinitials">Enter your initials here</h3>
+            <input type="text" id="initialssubmit" maxlength="5"/>
+            <button class="initialsubmit">Submit</button>
+        </form>
+    </section>
+
     <script src="./javascript.js"></script>
 </body>
 </html>

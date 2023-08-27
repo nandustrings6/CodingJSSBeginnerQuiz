@@ -1,4 +1,7 @@
 const StartQuiz = document.querySelector('.StartQuiz');
+const timer = 90; 
+const timerID; 
+
 
 const Questions = [
     {

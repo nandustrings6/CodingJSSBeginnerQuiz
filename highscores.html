@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodingQuizforJSSBeginners</title>
+    <title>CodingQuizHighscores</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
+
 <body>
-    <section Class="HighScoresPage">
-        <h4>High Scores</h4>
-        <button class="gobackbutton">Go Back</button>
-        <button class="clearhighscores">Clear High Scores</button>
+    <section class="highscorespage">
+        <div id="high-scores">
+            <h1 class="highscoreheader">High scores</h1>
+            <div class="listhighscoreslocalstorage"></div>
+            <div class="goback&clear">
+                <button id="restartbtn">Restart</button>
+                <button id="clearbtn">Clear Scores</button>
+            </div>
+        </div>
+        
     </section>
+
+    <script src="./javascript.js"></script>
+
 </body>
 </html>

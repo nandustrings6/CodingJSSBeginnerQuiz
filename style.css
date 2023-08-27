@@ -2,32 +2,38 @@ body {
     display: flexbox;
     margin: 0px;
     text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 2;
 }
 
 .Title {
+    object-position: center;
     font-size: 40px;
     color: rgb(213, 57, 135);
 }
 
-.Time {
+#Timer {
     float: right;
-    padding-right: 10px;
+    padding-right: 15px;
     margin-bottom:20%;
+    margin-top: 2%;
 }
 
 .Viewhighscores {
     float: left;
-    padding-left: 10px;
+    margin-top: 2%;
+    padding-left: 15px;
     margin-bottom:20%;
+}
+
+#Welcome {
+    font-size: 25px;
+    color: rgb(21, 123, 201);
 }
 
 .Page1Para {
     text-align: center;
     margin-top:5%;
-}
-
-.Startquiz {
-    align-items: center;
 }
 
 ul {
@@ -40,4 +46,9 @@ ul {
 button {
     border-radius: 10%;
     background-color: rgb(47, 115, 176);
+}
+
+.highscoreheader {
+    font-size: 30px;
+    color: rgb(213, 57, 135);
 }
