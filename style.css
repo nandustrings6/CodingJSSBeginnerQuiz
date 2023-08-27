@@ -1,26 +1,29 @@
 body {
-    display: block;
+    display: flexbox;
     margin: 0px;
-    background-image: url(./Assets/Backgroundimage.jpg);
-    background-size: contain;
-  }
+    text-align: center;
+}
 
 .Title {
-    display: flex;
-    text-rendering: auto;
     font-size: 40px;
+    color: rgb(213, 57, 135);
 }
 
 .Time {
-    text-align: right;
+    float: right;
+    padding-right: 10px;
+    margin-bottom:20%;
 }
 
 .Viewhighscores {
-    text-align: left;
+    float: left;
+    padding-left: 10px;
+    margin-bottom:20%;
 }
 
 .Page1Para {
     text-align: center;
+    margin-top:5%;
 }
 
 .Startquiz {
@@ -36,5 +39,5 @@ ul {
 
 button {
     border-radius: 10%;
-    color: rgb(48, 168, 227);
+    background-color: rgb(47, 115, 176);
 }
