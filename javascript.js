@@ -127,7 +127,44 @@ function score () {
     }, 2000)
 }; 
 
-//code line 155 to 233 to be written// 
+//Done-function to get saved high scores from local storage 
+
+var loadScores = function () {
+    if (!savedScores) {
+        return false;
+    }
+    savedScores = JSON.parse(savedScores);
+    var initials = document.querySelector("#initialssubmit").value;
+    var newScore = {
+        score: timer,
+        initials: initials
+    }
+
+    savedScores.push(newScore);
+    console.log(savedScores)
+
+    savedScores.forEach(score=> {
+        initialSubmitEl.innerText = score.initials
+        yourScoreEl.innerText = score.score
+    })
+};
+
+//Display high scores  - check code line 181 & 182 which is trying to hide and unhide sections 
+//which is not applicable for my code as I have created a separate HTML page for high scores 
+
+function displayHighScores (initials) {
+    page1.classList.add("hidepage");
+    questionAnswersEl.classList.add("hidepage"); 
+    if (typeof initials == "string") {
+        var score = {initials, timer}
+        viewHighScoresOnPage.push(score)
+    }
+
+    //this function is not yet complete - refer to code line 192 onwards
+
+}
+
+
 
 //Questions at the bottom to avoid confusion 
 
