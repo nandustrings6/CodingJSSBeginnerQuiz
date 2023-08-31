@@ -1,6 +1,6 @@
-const startQuiz = document.querySelector('.StartQuiz');
+const startQuiz = document.querySelector('.StartQuizbtn');
 const timer = 90; 
-var timercountdown;
+var countDown;
 const timerIdEl = document.getElementById('Timer');
 const nextBtnEl = document.getElementById("nextbtn");
 const questionAnswersEl = document.getElementById("questionanswers");
@@ -10,7 +10,7 @@ const answersEl = document.getElementById("answers");
 const displayAnswer = document.querySelector('.displayanswer');
 const viewHighScores = document.querySelector('.Viewhighscores'); //re-check this later
 const initialSubmitBtn = document.querySelector('.initialsubmitbtn');
-const clearBtn = document.querySelector('.clearbtn');
+const clearBtn = document.getElementById('clearbtn');
 const initialSubmitEl = document.getElementById('initialssubmit'); 
 const restartBtnEl = document.getElementById('restartbtn'); 
 const yourScoreEl = document.getElementById('yourscore'); //re-check this later
@@ -29,8 +29,8 @@ function countDownFunction () {
 
 //DONE - sequence of events - click on StartQuizbtn event listener
 
-startQuiz.addEventListener("Click", startQuestionSlides);
-nextbtn.addEventListener("Click", () => {
+startQuiz.addEventListener("click", startQuestionSlides);
+nextbtn.addEventListener("click", () => {
     questionSlides++
     giveNextQuestion()
 });
@@ -38,7 +38,7 @@ nextbtn.addEventListener("Click", () => {
 //DONE - To startQuestionSlides function
 
 function startQuestionSlides () {
-    timerCountDown = setInterval(countDownFunction, 1000);
+    var countDown = setInterval(countDownFunction, 1000);
     page1.classList.add("hidepage");
     questionSlides = questions
     questionAnswersEl.classList.remove("hidepage");
@@ -118,7 +118,7 @@ function selectAnswer(e) {
 //Done - function 'score' to compute score based on time left and display to the user
 
 function score () {
-    clearInterval(timercountdown); 
+    clearInterval(countDown); 
     timerIdEl.textContent = "Time:" + timer;
     setTimeout(function () {
         questionAnswersEl.classList.add("hidepage");
@@ -149,7 +149,7 @@ var loadScores = function () {
     })
 };
 
-//Display high scores  - check code line 181 & 182 which is trying to hide and unhide sections 
+//Done - Display high scores  - check code line 181 & 182 which is trying to hide and unhide sections 
 //which is not applicable for my code as I have created a separate HTML page for high scores 
 
 function displayHighScores (initials) {
@@ -160,13 +160,45 @@ function displayHighScores (initials) {
         viewHighScoresOnPage.push(score)
     }
 
-    //this function is not yet complete - refer to code line 192 onwards
+    var highScoreEL = document.querySelector.apply('.listhighscoreslocalstorage');
+    highScoreEL.innerHTML = "";
+    for (i = 0; i < viewHighScoresOnPage.length; i++) {
+        var div1 = document.createElement("div");
+        div1.setAttribute("Class", "name-div");
+        div1.innerText = viewHighScoresOnPage[i].initials; 
+        var div2 = document.createElement("div");
+        div2.setAttribute("Class", "score-div");
+        div2.innerText = viewHighScoresOnPage.timer; 
 
-}
+        highScoreEL.appendChild(div1); 
+        highScoreEL.appendChild(div2);
+    }
+    
+    localStorage.setItem("viewHighScoresOnPage", JSON.stringify(viewHighScoresOnPage));
 
+};
 
+//Done - View high scores - I may not need this because I have already linked the page with a new HTML 
+
+viewHighScores.addEventListener("click", displayHighScores); 
+
+initialSubmitBtn.addEventListener("click", function (event) {
+    event.preventDefault()
+    var initials = document.querySelector("#initialssubmit").value; 
+    displayHighScores(initials); 
+}); 
+
+//Done - Restart page
+
+restartBtnEl.addEventListener("click", function (event) {
+    window.location.reload();
+});
 
 //Questions at the bottom to avoid confusion 
+clearBtn.addEventListener("click", function () {
+    localStorage.clear();
+    document.querySelector("listhighscoreslocalstorage").innerHTML = "";
+});
 
 const questions = [
     {
