@@ -16,6 +16,8 @@ const restartBtnEl = document.getElementById('restartbtn');
 const yourScoreEl = document.getElementById('yourscore'); 
 var viewHighScoresOnPage = JSON.parse(localStorage.getItem("listhighscoreslocalstorage")) || []; 
 var questionSlides; 
+var initialQuestionIndex = 0
+
 
 //DONE - Timer 
 
@@ -31,17 +33,19 @@ function countDownFunction () {
 
 startQuiz.addEventListener("click", startQuestionSlides);
 nextbtn.addEventListener("click", () => {
-    questionSlides++
-    giveNextQuestion()
+    //questionSlides++
+    //giveNextQuestion() (this may not be needed)
 });
 
 //DONE - To startQuestionSlides function
 
 function startQuestionSlides () {
+    console.log('startQuiz')
     var countDown = setInterval(countDownFunction, 1000);
-    page1.classList.add("hidepage");
-    questionSlides = questions
-    questionAnswersEl.classList.remove("hidepage");
+    page1.style.display="none"
+    questionAnswersEl.style.display="block"
+    //questionSlides = questions
+    //questionAnswersEl.classList.remove("hide");
 
     countDownFunction();
     giveNextQuestion();
@@ -56,26 +60,30 @@ function giveNextQuestion () {
 
 //DONE - Start displaying questions showNextQuestion function
 
-function showNextQuestion (questionDisplay) {
-    questionEl.innerText = questionDisplay.questions
-    questionDisplay.answer.forEach(answer => {
-        var button = document.createElement ("button")
-        button.innerText = answer.text
-        button.classList.add("answerbtn")
+function showNextQuestion () {
+    var questionDisplay = questions[initialQuestionIndex]
+    questionEl.innerText = questions[initialQuestionIndex].question
+    questionDisplay.answer.forEach((answer,index) => {
+        var btnChoice = document.createElement ("button")
+        btnChoice.textContent=questionDisplay.answer[index].Text
+        //button.innerText = questionDisplay.answer.text
+        btnChoice.classList.add("answerbtn")
         if (answer.correct) {
-            button.dataset.correct = answer.correct
+            btnChoice.dataset.correct = answer.correct
         }
-        button.addEventListener("click", selectAnswer)
-        answersEl.appendChild(button)
+        btnChoice.addEventListener("click", selectAnswer)
+        answersEl.appendChild(btnChoice)
         
     });
+
+    questionDisplay++; //added as per inputs from Sheetal
 };
 
 //Done - resetNextQuestion function
 
 function resetNextQuestion () {
-    nextBtnEl.classList.add("hidepage")
-    displayAnswer.classList.add("hidepage")
+    nextBtnEl.classList.add("hide")
+    displayAnswer.classList.add("hide")
     while (answersEl.firstChild) {
         answersEl.removeChild
         (answersEl.firstChild)
@@ -87,7 +95,7 @@ function resetNextQuestion () {
 function selectAnswer(e) {
     var selectedButton = e.target; 
     var correct = selectedButton.dataset.correct;
-    displayAnswer.classList.remove("hidepage")
+    displayAnswer.classList.remove("hide") //redo the hide
     if (correct) {
         displayAnswer.innerHTML = "That's correct!";
     }
@@ -101,10 +109,10 @@ function selectAnswer(e) {
     }
     
     if (questionSlides > 0) {
-        nextBtnEl.classList.remove("hidepage")
-        displayAnswer.classList.remove("hidepage")}
+        nextBtnEl.classList.remove("hide")
+        displayAnswer.classList.remove("hide")}
     else {
-        startQuiz.classList.remove("hidepage")
+        startQuiz.classList.remove("hide")
         score();
     }
 };
@@ -115,8 +123,8 @@ function score () {
     clearInterval(countDown); 
     timerIdEl.textContent = "Time:" + timer;
     setTimeout(function () {
-        questionAnswersEl.classList.add("hidepage");
-        document.getElementById("name&scorepage").classList.remove("hidepage");
+        questionAnswersEl.classList.add("hide");
+        document.getElementById("nameScorepage").classList.remove("hide");
         document.getElementById("yourscore").textContent = "Your final score is" + timer;
     }, 2000)
 }; 
@@ -146,10 +154,10 @@ var loadScores = function () {
 //Done - Display high scores 
 
 function displayHighScores (initials) {
-    document.getElementById('high-scores').classList.remove("hidepage")
-    document.getElementById('name&scorepage').classList.add("hidepage");
-    page1.classList.add("hidepage");
-    questionAnswersEl.classList.add("hidepage"); 
+    document.getElementById('high-scores').classList.remove("hide")
+    document.getElementById('name&scorepage').classList.add("hide");
+    page1.classList.add("hide");
+    questionAnswersEl.classList.add("hide"); 
     if (typeof initials == "string") {
         var score = {initials, timer}
         viewHighScoresOnPage.push(score)
